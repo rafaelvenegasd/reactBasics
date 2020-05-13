@@ -1,13 +1,15 @@
 import React from "react";
 import "./App.scss";
 import ProductCard from "./components/ProductCard";
-
-// import ShoppingCartItem from "./components/ShoppingCartItem";
+import ShoppingCartItem from "./components/ShoppingCartItem";
 
 // Render the products dinamically with a loop
 import products from "./products";
 
+
 function App() {
+  const purchasedItems = [];
+
   function handleRemove() {
     console.log("handleRemove");
   }
@@ -50,69 +52,15 @@ function App() {
               <h2 className="h3 mt-2">Shopping Cart</h2>
               <hr className="mb-3" />
             </div>
-{/* 
-            <ShoppingCartItem
-              title="Nike Runner 2000"
-              price={88}
-              img={img_1}
-              handleRemove={handleRemove}
-              handleChange={handleChange}
-            />
-
-            <div className="col shopping__cart__item">
-              <div className="row flex-column">
-                <div className="col">
-                  <div className="row">
-                    <div className="col-12 col-xl-4 mb-3 mb-xl-0">
-                      <img className="shopping__cart__img" src={img_2} alt="" />
-                    </div>
-                    <div className="col-12 col-xl-8">
-                      <div className="row flex-column">
-                        <div className="col">
-                          <h4 className="h5 product-name">
-                            <strong>Puma 80's</strong>
-                          </h4>
-                        </div>
-                        <div className="col">
-                          <p>
-                            <strong>109€</strong>
-                          </p>
-                        </div>
-                        <div className="col mt-auto">
-                          <div className="row">
-                            <div className="col col-6 col-lg-4">
-                              <select
-                                defaultValue="2"
-                                className="custom-select"
-                              >
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
-                                <option value="8">8</option>
-                                <option value="9">9</option>
-                                <option value="10">10</option>
-                              </select>
-                            </div>
-                            <div className="col col-6 col-lg-8">
-                              <button type="btn" className="btn btn-dark">
-                                Remove
-                              </button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="col">
-                  <hr />
-                </div>
-              </div>
-            </div>
+            {purchasedItems.map((purchasedItem) => (
+              <ShoppingCartItem
+                title={purchasedItem.title}
+                price={purchasedItem.price}
+                img={purchasedItem.img}
+                handleRemove={handleRemove}
+                handleChange={handleChange}
+              />
+            ))}
             <div className="col shopping__cart__footer">
               <div className="row row-cols-1 flex-column">
                 <div className="col">
@@ -133,7 +81,8 @@ function App() {
                   </button>
                 </div>
               </div>
-            </div> */}
+            </div>
+
           </div>
         </aside>
       </div>
