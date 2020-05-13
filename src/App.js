@@ -1,16 +1,8 @@
 import React from "react";
-
 import "./App.scss";
-
-import img_1 from "./img/img_1.jpeg";
-import img_2 from "./img/img_2.jpeg";
-import img_3 from "./img/img_3.jpeg";
-import img_4 from "./img/img_4.jpeg";
-import img_5 from "./img/img_5.jpeg";
-import img_6 from "./img/img_6.jpeg";
-
 import ProductCard from "./components/ProductCard";
-import ShoppingCartItem from "./components/ShoppingCartItem";
+
+// import ShoppingCartItem from "./components/ShoppingCartItem";
 
 // Render the products dinamically with a loop
 import products from "./products";
@@ -27,75 +19,38 @@ function App() {
   return (
     <main className="container-fluid">
       <div className="row">
+
         <div className="col col-6 col-lg-8 p-4">
           <section className="row row-cols-1">
             <div className="col">
               <h1 className="mb-4">Shop</h1>
             </div>
+
             <div className="col">
               <div className="row row-cols-1 row-cols-md-2 row-cols-xl-4">
-                {/* {products.map((product) => (
-                  map over products
-                ))} */}
-                <ProductCard
-                  img={img_1}
-                  title="Nike Runner 2000"
-                  price={88}
-                  handleAddToCart={() => {
-                    console.log("Add to cart");
-                  }}
-                />
-                <div className="col mb-4 d-flex flex-column product__card">
-                  <img className="product__img" src={img_2} alt="" />
-                  <div className="d-block">
-                    <h3 className="h5">Puma 80's</h3>
-                    <p>109€</p>
-                    <button className="btn btn-dark">Add to cart</button>
-                  </div>
-                </div>
-                <div className="col mb-4 d-flex flex-column product__card">
-                  <img className="product__img" src={img_3} alt="" />
-                  <div className="d-block">
-                    <h3 className="h5">Nike Rev Lite</h3>
-                    <p className="">66€</p>
-                    <button className="btn btn-dark">Add to cart</button>
-                  </div>
-                </div>
-                <div className="col mb-4 d-flex flex-column product__card">
-                  <img className="product__img" src={img_4} alt="" />
-                  <div className="d-block">
-                    <h3 className="h5">Nike Air</h3>
-                    <p className="">129€</p>
-                    <button className="btn btn-dark">Add to cart</button>
-                  </div>
-                </div>
-                <div className="col mb-4 d-flex flex-column product__card">
-                  <img className="product__img" src={img_5} alt="" />
-                  <div className="d-block">
-                    <h3 className="h5">Adidas Run Kit</h3>
-                    <p className="">199€</p>
-                    <button className="btn btn-dark">Add to cart</button>
-                  </div>
-                </div>
-                <div className="col mb-4 d-flex flex-column product__card">
-                  <img className="product__img" src={img_6} alt="" />
-                  <div className="d-block">
-                    <h3 className="h5">Adidas Flyer</h3>
-                    <p className="">59€</p>
-                    <button className="btn btn-dark">Add to cart</button>
-                  </div>
-                </div>
+                {products.map((product) => (
+                  <ProductCard
+                    key={product.id}
+                    img={product.img}
+                    title={product.title}
+                    price={product.price}
+                    handleAddToCart={() => {
+                      console.log("Add to cart");
+                    }}
+                  />
+                ))}
               </div>
             </div>
           </section>
         </div>
+
         <aside className="col col-6 col-lg-4 p-4">
           <div className="row flex-column">
             <div className="col shopping__cart__header">
               <h2 className="h3 mt-2">Shopping Cart</h2>
               <hr className="mb-3" />
             </div>
-
+{/* 
             <ShoppingCartItem
               title="Nike Runner 2000"
               price={88}
@@ -178,7 +133,7 @@ function App() {
                   </button>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
         </aside>
       </div>
