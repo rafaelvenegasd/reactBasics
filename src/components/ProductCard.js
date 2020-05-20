@@ -1,19 +1,16 @@
 import React from "react";
-import Btn from './btn'
 
-class ProductCard extends React.Component{
-  render(){
+function ProductCard(props){
     return (
       <div className="col mb-4 d-flex flex-column product__card">
-        <img className="product__img" src={this.props.img} alt="" />
+        <img className="product__img" src={props.img} alt="" />
         <div className="d-block">
-          <h3 className="h5">{this.props.title}</h3>
-          <p>{this.props.price}€</p>
-          <Btn label="Add to cart" onClick={this.props.handleAddToCart} />
+          <h3 className="h5">{props.title}</h3>
+          <p>{props.price}€</p>
+          <button className="btn btn-dark" onClick={props.handleAddToCart}>Add To cart</button>
         </div>
       </div>
     );
   }
-}
 
 export default ProductCard;

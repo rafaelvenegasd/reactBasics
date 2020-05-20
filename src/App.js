@@ -1,33 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.scss";
 import ProductCard from "./components/ProductCard";
 import ShoppingCartItem from "./components/ShoppingCartItem";
-
-// Render the products dinamically with a loop
 import products from "./products";
 
 
 function App() {
-  const purchasedItems = [];
+  let [purchasedItems, setPurchasedItems] = useState(JSON.parse(localStorage.getItem('Cart')) || []);  
 
   function handleRemove() {
     console.log("handleRemove");
   }
-
   function handleChange() {
-    console.log("handleChange");
+    
   }
 
   return (
     <main className="container-fluid">
       <div className="row">
-
         <div className="col col-6 col-lg-8 p-4">
           <section className="row row-cols-1">
             <div className="col">
               <h1 className="mb-4">Shop</h1>
             </div>
-
             <div className="col">
               <div className="row row-cols-1 row-cols-md-2 row-cols-xl-4">
                 {products.map((product) => (
@@ -36,8 +31,10 @@ function App() {
                     img={product.img}
                     title={product.title}
                     price={product.price}
-                    handleAddToCart={() => {
-                      console.log("Add to cart");
+                    handleAddToCart={() => {                         
+                      purchasedItems.push(product)
+                      localStorage.setItem('Cart', JSON.stringify(purchasedItems));
+                      setPurchasedItems(purchasedItems = JSON.parse(localStorage.getItem('Cart'))); 
                     }}
                   />
                 ))}
@@ -45,15 +42,16 @@ function App() {
             </div>
           </section>
         </div>
-
         <aside className="col col-6 col-lg-4 p-4">
           <div className="row flex-column">
             <div className="col shopping__cart__header">
               <h2 className="h3 mt-2">Shopping Cart</h2>
               <hr className="mb-3" />
             </div>
+
             {purchasedItems.map((purchasedItem) => (
               <ShoppingCartItem
+                key={purchasedItem.id}
                 title={purchasedItem.title}
                 price={purchasedItem.price}
                 img={purchasedItem.img}
@@ -82,7 +80,6 @@ function App() {
                 </div>
               </div>
             </div>
-
           </div>
         </aside>
       </div>
